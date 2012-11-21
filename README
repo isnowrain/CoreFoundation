@@ -1,32 +1,29 @@
-This library is useful for those who are intending to use CFLite or CoreFoundation into their .NET 
-projects. It has most corefoundation DllImport declarations and some additional functions wrapped around
-the DllImports.
+This library is useful for those who are intending to use CFLite or CoreFoundation into their .NET projects. It has most corefoundation DllImport declarations and some additional functions wrapped around the DllImports.
 
 Remember to add this library as a reference to your project
-Remember to also add location of the corefoundation dll to the Environmental PATH variable either
-programatically or manually
+Remember to also add location of the corefoundation dll to the Environmental PATH variable either programatically or manually
 
 Usage example (C#)
 	
-	using CoreFoundation; 
+    using CoreFoundation; 
     class Program
     {
         static void Main(string[] args)
         {
+
+	   //Able to implicitly specify string value only for certain types		
+            CFString cfstring = "hello"; 			
+	   Console.WriteLine(cfstring.ToString());
 			
-            CFString cfstring = "hello"; //Able to implicitly specify string value only for certain types			
-			Console.WriteLine(cfstring.ToString());
+	   //Reading plist files regardless of binary or xml format
+	   CFPropertyList plist = new CFPropertyList(PATH);
+	   Console.WriteLine(plist.ToString());
 			
-			//Reading plist files regardless of binary or xml format
-			CFPropertyList plist = new CFPropertyList(PATH);
-			Console.WriteLine(plist.ToString());
-			
-			//Casting to CFPropertyList Objects(eg CFArray, CFDictionary...) and reading attributes
-			CFDictionary dict = (CFDictionary)plist;
-			CFType val = dict.GetValue(KEY_NAME);
-			Console.WriteLine("Value of " + KEY_NAME + " is " + val.ToString());
-			Console.WriteLine("This dictionary has " + dict.Length.ToString() + " key-value pairs");			
-			
+	   //Casting to CFPropertyList Objects(eg CFArray, CFDictionary...) and reading attributes
+	   CFDictionary dict = (CFDictionary)plist;
+	   CFType val = dict.GetValue(KEY_NAME);
+	   Console.WriteLine("Value of " + KEY_NAME + " is " + val.ToString());
+	   Console.WriteLine("This dictionary has " + dict.Length.ToString() + " key-value pairs");		
         }
     }
 
