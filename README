@@ -1,4 +1,4 @@
-This library is useful for those who are intending to use CFLite or CoreFoundation into their .NET projects. It has most corefoundation DllImport declarations and some additional functions wrapped around the DllImports.
+This library is useful for those who are intending to use CFLite or CoreFoundation into their .NET projects. It has vital corefoundation DllImport declarations and some additional functions wrapped around the DllImports.
 
 Remember to add this library as a reference to your project
 Remember to also add location of the corefoundation dll to the Environmental PATH variable either programatically or manually
